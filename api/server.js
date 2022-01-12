@@ -1,6 +1,11 @@
 const express = require('express');
 
 const server = express();
+const { logger} = require('./middleware/middleware')
+
+server.use(express.json())
+
+server.use(logger)
 
 // remember express by default cannot parse JSON in request bodies
 
@@ -11,3 +16,6 @@ server.get('/', (req, res) => {
 });
 
 module.exports = server;
+
+
+
